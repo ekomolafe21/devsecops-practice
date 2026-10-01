@@ -14,9 +14,7 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Run SAST Security Scan (Semgrep)
-        uses: semgrep/semgrep-action@v1
-        with:
-          config: >-
-            p/security-audit
-            p/secrets
+      - name: Run Full SAST Security Scan (Semgrep)
+        run: |
+          pip install semgrep
+          semgrep scan --config="p/security-audit" --config="p/secrets" --error
