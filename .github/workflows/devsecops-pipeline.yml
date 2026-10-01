@@ -7,15 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  security-and-build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Run Basic Health Check
-        run: |
-          echo "Starting automated security checks..."
-          echo "Checking system environment..."
-          date
+      - name: Run SAST Security Scan (Semgrep)
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: p/default
