@@ -2,19 +2,18 @@ name: DevSecOps CI Pipeline
 
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   security-and-build:
     runs-on: ubuntu-latest
-
+    container:
+      image: semgrep/semgrep
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Run Full SAST Security Scan (Semgrep)
-        run: |
-          pip install semgrep
-          semgrep scan --config="p/security-audit" --config="p/secrets" --error
+      - name: Run SAST Security Scan (Semgrep)
+        run: semgrep scan --config p/security-audit --config p/secrets --error
