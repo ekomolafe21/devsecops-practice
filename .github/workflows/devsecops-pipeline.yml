@@ -1,0 +1,21 @@
+name: DevSecOps CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Run Basic Health Check
+        run: |
+          echo "Starting automated security checks..."
+          echo "Checking system environment..."
+          date
