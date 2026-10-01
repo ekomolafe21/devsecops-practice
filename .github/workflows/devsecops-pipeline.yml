@@ -17,4 +17,7 @@ jobs:
       - name: Run SAST Security Scan (Semgrep)
         uses: semgrep/semgrep-action@v1
         with:
-          config: p/default
+          config: >-
+            p/default
+            p/security-audit
+            p/secrets
