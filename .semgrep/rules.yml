@@ -1,0 +1,6 @@
+rules:
+  - id: no-md5
+    pattern: hashlib.md5(...)
+    message: MD5 is a weak hash. Use hashlib.sha256 instead.
+    languages: [python]
+    severity: ERROR

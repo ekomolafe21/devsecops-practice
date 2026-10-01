@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run SAST Security Scan (Semgrep)
-        run: semgrep scan --config p/security-audit --config p/secrets --error
+        run: semgrep scan --config p/security-audit --config p/secrets --config .semgrep/rules.yml --error
