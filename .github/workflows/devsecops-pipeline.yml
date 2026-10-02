@@ -7,17 +7,16 @@ on:
     branches: [ main ]
 
 jobs:
-  security-and-build:
+  security-scans:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
-
-      - name: Run SAST Security Scan (Semgrep)
-        uses: semgrep/semgrep-action@v1
         with:
-          config: >-
-            p/default
-            p/security-audit
-            p/secrets
+          fetch-depth: 0
+
+      - name: TruffleHog Secret Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --debug

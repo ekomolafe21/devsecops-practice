@@ -1,3 +1,2 @@
-import hashlib
-AWS_SECRET_KEY = 'AKIAIOSFODNN7EXAMPLEkey12345'
-password_hash = hashlib.md5(b'secret_password').hexdigest()
+# Secret Scanning Test File
+CUSTOM_API_SECRET = 'secret_key_8f910a3d4e72b912c'
